@@ -35,3 +35,17 @@ mae = mean_absolute_error(y_test, predictions)
 rmse = root_mean_squared_error(y_test, predictions)
 print(f"MAE: {mae:.2f} $/MWh")
 print(f"RMSE: {rmse:.2f} $/MWh")
+
+
+import matplotlib.pyplot as plt
+
+# Plot actual vs predicted for first 2 weeks of test set
+plt.figure(figsize=(14, 5))
+plt.plot(y_test.values[:336], label='Actual', alpha=0.7)
+plt.plot(predictions[:336], label='Predicted', alpha=0.7)
+plt.title('Actual vs Predicted - First 2 Weeks of 2024')
+plt.xlabel('Hour')
+plt.ylabel('Price ($/MWh)')
+plt.legend()
+plt.savefig('actual_vs_predicted.png')
+print("Plot saved")
